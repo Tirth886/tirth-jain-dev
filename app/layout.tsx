@@ -7,12 +7,25 @@ import ThemeSwitch from "@/components/theme-switch";
 import ThemeContextProvider from "@/context/theme-context";
 import { Toaster } from "react-hot-toast";
 import Head from "next/head";
+import { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "Tirth Jain | Personal Portfolio",
-  description: "Tirth Jain is a full-stack developer with 4+ years of experience."
+export const metadata: Metadata = {
+  title: "Tirth Jain | FullStack Developer | Software Engineer",
+  description: "Experienced FullStack Developer and Software Engineer, adept in both front-end and back-end technologies. Crafting seamless, user-centric applications with a blend of creativity and technical skill.",
+  openGraph: {
+    type: "website",
+    images: "https://131d-103-238-107-187.ngrok-free.app/tj.png",
+    determiner: "auto",
+    description: "Discover the world of Tirth Jain - a passionate FullStack Developer and Software Engineer. From front-end finesse to back-end brilliance, Tirth's creations redefine user experiences through innovation and expertise.",
+    siteName: "tirthj.dev",
+    phoneNumbers: "+91-7984814283",
+    title: "Tirth Jain | FullStack Developer | Software Engineer",
+    url: "https://tirthj.dev/",
+    countryName: "India",
+    emails: "tirth886jain@gmail.com",
+  }
 };
 
 export default function RootLayout({

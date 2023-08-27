@@ -4,6 +4,14 @@ exports.id = 931;
 exports.ids = [931];
 exports.modules = {
 
+/***/ 8293:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/compiled/react-dom-experimental/server");
+
+/***/ }),
+
 /***/ 5752:
 /***/ ((module) => {
 
@@ -33,6 +41,14 @@ module.exports = require("next/dist/compiled/react-experimental/jsx-runtime");
 
 "use strict";
 module.exports = require("next/dist/compiled/react-server-dom-webpack-experimental/client");
+
+/***/ }),
+
+/***/ 5927:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/compiled/react-server-dom-webpack-experimental/client.edge");
 
 /***/ }),
 
@@ -204,6 +220,54 @@ module.exports = require("next/dist/shared/lib/utils/warn-once");
 
 /***/ }),
 
+/***/ 9491:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("assert");
+
+/***/ }),
+
+/***/ 2361:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("events");
+
+/***/ }),
+
+/***/ 7147:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("fs");
+
+/***/ }),
+
+/***/ 3685:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("http");
+
+/***/ }),
+
+/***/ 5687:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("https");
+
+/***/ }),
+
+/***/ 2037:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("os");
+
+/***/ }),
+
 /***/ 1017:
 /***/ ((module) => {
 
@@ -212,11 +276,43 @@ module.exports = require("path");
 
 /***/ }),
 
+/***/ 2781:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("stream");
+
+/***/ }),
+
+/***/ 6224:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("tty");
+
+/***/ }),
+
 /***/ 7310:
 /***/ ((module) => {
 
 "use strict";
 module.exports = require("url");
+
+/***/ }),
+
+/***/ 3837:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("util");
+
+/***/ }),
+
+/***/ 9796:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("zlib");
 
 /***/ }),
 
@@ -281,15 +377,47 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 7760:
+/***/ 4845:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+
+const actions = {
+'c680395adc4ac372d404c095cbd634ba0efb2575': () => Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 200)).then(mod => mod["sendEmail"]),
+}
+
+async function endpoint(id, ...args) {
+  const action = await actions[id]()
+  return action.apply(null, args)
+}
+
+// Using CJS to avoid this to be tree-shaken away due to unused exports.
+module.exports = {
+  'c680395adc4ac372d404c095cbd634ba0efb2575': endpoint.bind(null, 'c680395adc4ac372d404c095cbd634ba0efb2575'),
+}
+
+
+/***/ }),
+
+/***/ 7184:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 2038));
-Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 6031));
 Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 3838));
 Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 2617));
 Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 3945));
-Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 120))
+Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 120));
+Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 6762))
+
+/***/ }),
+
+/***/ 7255:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 9238));
+Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 798));
+Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 3518));
+Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 2226));
+Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 949))
 
 /***/ }),
 
@@ -301,17 +429,6 @@ Promise.resolve(/* import() eager */).then(__webpack_require__.t.bind(__webpack_
 Promise.resolve(/* import() eager */).then(__webpack_require__.t.bind(__webpack_require__, 6249, 23));
 Promise.resolve(/* import() eager */).then(__webpack_require__.t.bind(__webpack_require__, 7844, 23));
 Promise.resolve(/* import() eager */).then(__webpack_require__.t.bind(__webpack_require__, 8782, 23))
-
-/***/ }),
-
-/***/ 8765:
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 3518));
-Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 9238));
-Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 798));
-Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 2226));
-Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 949))
 
 /***/ }),
 
@@ -408,7 +525,7 @@ function About() {
 
 /***/ }),
 
-/***/ 6031:
+/***/ 6762:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -430,6 +547,25 @@ var section_heading = __webpack_require__(7038);
 var motion = __webpack_require__(1963);
 // EXTERNAL MODULE: ./lib/hooks.ts
 var hooks = __webpack_require__(6229);
+// EXTERNAL MODULE: ./node_modules/next/dist/client/app-call-server.js
+var app_call_server = __webpack_require__(4783);
+// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-flight-loader/action-proxy.js
+var action_proxy = __webpack_require__(9025);
+// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-flight-loader/action-client-wrapper.js
+var action_client_wrapper = __webpack_require__(3787);
+;// CONCATENATED MODULE: ./actions/sendEmail.ts
+
+
+
+function __build_action__(action, args) {
+  return callServer(action.$$id, args)
+}
+
+/* __next_internal_action_entry_do_not_use__ sendEmail */ 
+
+var sendEmail = (0,action_client_wrapper/* default */.Z)("c680395adc4ac372d404c095cbd634ba0efb2575");
+
+
 // EXTERNAL MODULE: ./node_modules/react-icons/fa/index.esm.js
 var index_esm = __webpack_require__(6775);
 // EXTERNAL MODULE: external "next/dist/compiled/react-dom-experimental/server-rendering-stub"
@@ -460,8 +596,12 @@ function SubmitBtn() {
     });
 }
 
+// EXTERNAL MODULE: ./node_modules/react-hot-toast/dist/index.mjs + 1 modules
+var dist = __webpack_require__(3518);
 ;// CONCATENATED MODULE: ./components/contact.tsx
 /* __next_internal_client_entry_do_not_use__ default auto */ 
+
+
 
 
 
@@ -505,8 +645,47 @@ function Contact() {
             }),
             /*#__PURE__*/ (0,jsx_runtime_.jsxs)("form", {
                 className: "mt-10 flex flex-col dark:text-black",
-                action: async (formData)=>{},
+                id: "form",
+                action: async (formData)=>{
+                    await sendEmail(formData);
+                    (0,dist["default"])("Thank you for getting in touch. I'll respond as soon as I can.", {
+                        icon: "✅",
+                        iconTheme: {
+                            primary: "#000",
+                            secondary: "#fff"
+                        },
+                        ariaProps: {
+                            role: "status",
+                            "aria-live": "polite"
+                        }
+                    });
+                    document.querySelector("form")?.reset();
+                },
                 children: [
+                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                        className: "md:flex justify-between my-3 sm:block",
+                        children: [
+                            /*#__PURE__*/ jsx_runtime_.jsx("input", {
+                                className: "h-14 px-4 md:flex-auto rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none w-full",
+                                name: "senderFirstName",
+                                type: "text",
+                                required: true,
+                                maxLength: 500,
+                                placeholder: "Your first name"
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                className: "md:mx-2 sm:mx-0"
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx("input", {
+                                className: "w-full md:mt-0 sm:mt-3 h-14 px-4 md:flex-auto rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none mt-3 md:mt-0",
+                                name: "senderLastName",
+                                type: "text",
+                                required: true,
+                                maxLength: 500,
+                                placeholder: "Your last name"
+                            })
+                        ]
+                    }),
                     /*#__PURE__*/ jsx_runtime_.jsx("input", {
                         className: "h-14 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none",
                         name: "senderEmail",
@@ -515,8 +694,32 @@ function Contact() {
                         maxLength: 500,
                         placeholder: "Your email"
                     }),
+                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                        className: "md:flex justify-between my-3 sm:block",
+                        children: [
+                            /*#__PURE__*/ jsx_runtime_.jsx("input", {
+                                className: "h-14 px-4 md:flex-auto rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none w-full",
+                                name: "senderSubject",
+                                type: "text",
+                                required: true,
+                                maxLength: 500,
+                                placeholder: "Your subject"
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                className: "md:mx-2 sm:mx-0"
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx("input", {
+                                className: "w-full md:mt-0 sm:mt-3 h-14 px-4 md:flex-auto rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none mt-3 md:mt-0",
+                                name: "senderTopic",
+                                type: "text",
+                                required: true,
+                                maxLength: 500,
+                                placeholder: "Your topic"
+                            })
+                        ]
+                    }),
                     /*#__PURE__*/ jsx_runtime_.jsx("textarea", {
-                        className: "h-52 my-3 rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none",
+                        className: "h-52 mb-3 rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none",
                         name: "message",
                         placeholder: "Your message",
                         required: true,
@@ -880,7 +1083,7 @@ function Intro() {
                     }),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", {
                         className: "group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10",
-                        href: "/CV.pdf",
+                        href: "/Tirth_Jain_Resume.pdf",
                         download: true,
                         children: [
                             "Download CV",
@@ -1352,12 +1555,12 @@ const skillsData = [
     "Linux",
     "Shell Programming",
     "MySQl",
+    "PHP",
     // "GraphQL",
     // "Apollo",
     "Express",
     // "PostgreSQL",
-    "Python",
-    "Django"
+    "Python"
 ];
 
 
@@ -1396,6 +1599,77 @@ function useSectionInView(sectionName, threshold = 0.75) {
         ref
     };
 }
+
+
+/***/ }),
+
+/***/ 200:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   sendEmail: () => (/* binding */ sendEmail)
+/* harmony export */ });
+/* harmony import */ var private_next_rsc_action_proxy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6315);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7640);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var resend__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2058);
+/* harmony import */ var _lib_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6836);
+/* harmony import */ var _email_contact_form_email__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9169);
+/* harmony import */ var private_next_rsc_action_validate__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(9730);
+/* __next_internal_action_entry_do_not_use__ sendEmail */ 
+
+
+
+
+const resend = new resend__WEBPACK_IMPORTED_MODULE_2__.Resend(process.env.RESEND_API_KEY);
+const sendEmail = async (formData)=>{
+    const senderEmail = formData.get("senderEmail") || "";
+    const message = formData.get("message") || "";
+    const senderFirstName = formData.get("senderFirstName") || "";
+    const senderLastName = formData.get("senderLastName") || "";
+    const senderSubject = formData.get("senderSubject") || "";
+    const senderTopic = formData.get("senderTopic") || "";
+    // simple server-side validation
+    if (!(0,_lib_utils__WEBPACK_IMPORTED_MODULE_4__.validateString)(senderEmail, 500)) {
+        return {
+            error: "Invalid sender email"
+        };
+    }
+    if (!(0,_lib_utils__WEBPACK_IMPORTED_MODULE_4__.validateString)(message, 5000)) {
+        return {
+            error: "Invalid message"
+        };
+    }
+    let data;
+    try {
+        data = await resend.emails.send({
+            from: "Contact Form | TirthJDev <onboarding@resend.dev>",
+            to: "tirth886jain@gmail.com",
+            subject: senderSubject.toString() + `${senderTopic.toString() === "" ? "" : senderTopic.toString()}`,
+            reply_to: senderEmail,
+            react: react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_email_contact_form_email__WEBPACK_IMPORTED_MODULE_3__["default"], {
+                senderEmail: senderEmail,
+                message: message,
+                firstName: senderFirstName.toString(),
+                lastName: senderLastName.toString()
+            })
+        });
+    } catch (error) {
+        return {
+            error: (0,_lib_utils__WEBPACK_IMPORTED_MODULE_4__.getErrorMessage)(error)
+        };
+    }
+    return {
+        data
+    };
+};
+
+(0,private_next_rsc_action_validate__WEBPACK_IMPORTED_MODULE_5__["default"])([
+    sendEmail
+]);
+(0,private_next_rsc_action_proxy__WEBPACK_IMPORTED_MODULE_0__["default"])("c680395adc4ac372d404c095cbd634ba0efb2575", null, sendEmail);
 
 
 /***/ }),
@@ -1508,8 +1782,20 @@ var dist = __webpack_require__(9035);
 
 
 const metadata = {
-    title: "Tirth Jain | Personal Portfolio",
-    description: "Tirth Jain is a full-stack developer with 4+ years of experience."
+    title: "Tirth Jain | FullStack Developer | Software Engineer",
+    description: "Experienced FullStack Developer and Software Engineer, adept in both front-end and back-end technologies. Crafting seamless, user-centric applications with a blend of creativity and technical skill.",
+    openGraph: {
+        type: "website",
+        images: "https://131d-103-238-107-187.ngrok-free.app/tj.png",
+        determiner: "auto",
+        description: "Discover the world of Tirth Jain - a passionate FullStack Developer and Software Engineer. From front-end finesse to back-end brilliance, Tirth's creations redefine user experiences through innovation and expertise.",
+        siteName: "tirthj.dev",
+        phoneNumbers: "+91-7984814283",
+        title: "Tirth Jain | FullStack Developer | Software Engineer",
+        url: "https://tirthj.dev/",
+        countryName: "India",
+        emails: "tirth886jain@gmail.com"
+    }
 };
 function RootLayout({ children }) {
     return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("html", {
@@ -1672,6 +1958,97 @@ function Home() {
 
 /***/ }),
 
+/***/ 9169:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ContactFormEmail)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6931);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7640);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _react_email_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7303);
+/* harmony import */ var _react_email_tailwind__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(1379);
+/* harmony import */ var _react_email_tailwind__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_react_email_tailwind__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+function ContactFormEmail({ message, senderEmail, lastName, firstName }) {
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_react_email_components__WEBPACK_IMPORTED_MODULE_2__.Html, {
+        children: [
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_react_email_components__WEBPACK_IMPORTED_MODULE_2__.Head, {}),
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_react_email_components__WEBPACK_IMPORTED_MODULE_2__.Preview, {
+                children: "New message from your tirthj.dev site"
+            }),
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_react_email_tailwind__WEBPACK_IMPORTED_MODULE_3__.Tailwind, {
+                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_react_email_components__WEBPACK_IMPORTED_MODULE_2__.Body, {
+                    className: "bg-gray-100 text-black",
+                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_react_email_components__WEBPACK_IMPORTED_MODULE_2__.Container, {
+                        children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_react_email_components__WEBPACK_IMPORTED_MODULE_2__.Section, {
+                            className: "bg-white borderBlack my-10 px-10 py-4 rounded-md",
+                            children: [
+                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_react_email_components__WEBPACK_IMPORTED_MODULE_2__.Hr, {}),
+                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_react_email_components__WEBPACK_IMPORTED_MODULE_2__.Text, {
+                                    children: [
+                                        "The sender's name is: ",
+                                        firstName + " " + lastName
+                                    ]
+                                }),
+                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_react_email_components__WEBPACK_IMPORTED_MODULE_2__.Text, {
+                                    children: [
+                                        "The sender's email is: ",
+                                        senderEmail
+                                    ]
+                                }),
+                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_react_email_components__WEBPACK_IMPORTED_MODULE_2__.Text, {
+                                    children: message
+                                })
+                            ]
+                        })
+                    })
+                })
+            })
+        ]
+    });
+}
+
+
+/***/ }),
+
+/***/ 6836:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getErrorMessage: () => (/* binding */ getErrorMessage),
+/* harmony export */   validateString: () => (/* binding */ validateString)
+/* harmony export */ });
+const validateString = (value, maxLength)=>{
+    if (!value || typeof value !== "string" || value.length > maxLength) {
+        return false;
+    }
+    return true;
+};
+const getErrorMessage = (error)=>{
+    let message;
+    if (error instanceof Error) {
+        message = error.message;
+    } else if (error && typeof error === "object" && "message" in error) {
+        message = String(error.message);
+    } else if (typeof error === "string") {
+        message = error;
+    } else {
+        message = "Something went wrong";
+    }
+    return message;
+};
+
+
+/***/ }),
+
 /***/ 3174:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -1710,7 +2087,7 @@ __webpack_require__.r(__webpack_exports__);
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [763,384], () => (__webpack_exec__(3757)));
+var __webpack_exports__ = __webpack_require__.X(0, [763,617], () => (__webpack_exec__(3757)));
 module.exports = __webpack_exports__;
 
 })();

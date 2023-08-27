@@ -151,11 +151,11 @@ export const skillsData = [
   "Linux",
   "Shell Programming",
   "MySQl",
+  "PHP",
   // "GraphQL",
   // "Apollo",
   "Express",
   // "PostgreSQL",
   "Python",
-  "Django",
   // "Framer Motion",
 ] as const;
