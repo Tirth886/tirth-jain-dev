@@ -8,8 +8,12 @@ import ContactFormEmail from "@/email/contact-form-email";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const sendEmail = async (formData: FormData) => {
-  const senderEmail = formData.get("senderEmail");
-  const message = formData.get("message");
+  const senderEmail = formData.get("senderEmail") || '';
+  const message = formData.get("message") || '';
+  const senderFirstName = formData.get("senderFirstName") || '';
+  const senderLastName = formData.get("senderLastName") || '';
+  const senderSubject = formData.get("senderSubject") || '';
+  const senderTopic = formData.get("senderTopic") || '';
 
   // simple server-side validation
   if (!validateString(senderEmail, 500)) {
@@ -26,13 +30,15 @@ export const sendEmail = async (formData: FormData) => {
   let data;
   try {
     data = await resend.emails.send({
-      from: "Contact Form <onboarding@resend.dev>",
-      to: "bytegrad@gmail.com",
-      subject: "Message from contact form",
+      from: "Contact Form | TirthJDev <onboarding@resend.dev>",
+      to: "tirth886jain@gmail.com",
+      subject: senderSubject.toString() + `${senderTopic.toString() === '' ? '' : senderTopic.toString()}`,
       reply_to: senderEmail,
       react: React.createElement(ContactFormEmail, {
-        message: message,
         senderEmail: senderEmail,
+        message: message,
+        firstName: senderFirstName.toString(),
+        lastName: senderLastName.toString()
       }),
     });
   } catch (error: unknown) {
