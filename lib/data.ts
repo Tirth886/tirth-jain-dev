@@ -101,7 +101,7 @@ export const experiencesData = [
     redirect: "https://www.excellentwebworld.com/",
     description:
       "My primary focus is to provide guidance to the team and facilitate their growth through the adoption of cutting-edge technologies.",
-    icon: React.createElement(FaReact),
+    icon: React.createElement(CgWorkAlt),
     date: "2023 - 2023",
   },
   {
