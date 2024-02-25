@@ -102,6 +102,16 @@ export const experiencesData = [
     description:
       "My primary focus is to provide guidance to the team and facilitate their growth through the adoption of cutting-edge technologies.",
     icon: React.createElement(FaReact),
+    date: "2023 - 2023",
+  },
+  {
+    title: "Software Developer III",
+    location: "Zuru Tech",
+    href: true,
+    redirect: "https://www.zuru.tech/",
+    description:
+      "As a Software Developer III at Zuru Tech, I am at the forefront of technological innovation, contributing my expertise to the dynamic landscape of software development. With a focus on excellence and a commitment to pushing boundaries, I collaborate with a talented team of professionals to drive impactful solutions and shape the future of technology.",
+    icon: React.createElement(FaReact),
     date: "2023 - Present 🚀",
   },
 ] as const;
