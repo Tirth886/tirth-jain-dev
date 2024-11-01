@@ -64,7 +64,7 @@ export default function Intro() {
       >
         <span className="font-bold">Hello, I'm Tirth Jain.</span> I'm a{" "}
         <span className="font-bold">software engineer </span>and<span className="font-bold"> full-stack developer</span> with{" "}
-        <span className="font-bold">4+ years</span> of experience. I enjoy
+        <span className="font-bold">6+ years</span> of experience. I enjoy
         building <span className="italic">sites & apps</span>. I have worked with various front-end frameworks and back-end frameworks, databases {"("}<span className="font-bold underline">MySql, MongoDB</span>{")"}, designed REST APIs. I usually talk about tech stack like <span className="font-bold underline">NodeJs, NextJs, ReactJs, PhP, Laravel, Codeigniter</span>.
       </motion.h4>
 
