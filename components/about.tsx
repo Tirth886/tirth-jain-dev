@@ -4,6 +4,7 @@ import React from "react";
 import SectionHeading from "./section-heading";
 import { motion } from "framer-motion";
 import { useSectionInView } from "@/lib/hooks";
+import { personal, stats } from "@/config/site-config";
 
 export default function About() {
   const { ref } = useSectionInView("About");
@@ -18,23 +19,69 @@ export default function About() {
       id="about"
     >
       <SectionHeading>About me</SectionHeading>
-      <p className="mb-3">I started development journey with <span className="font-medium"> Core PHP / MYSQL</span>, when i was doing my bachelors.{" "}I learned{" "}
-        <span className="font-bold">full-stack web development</span>.{" "}
-        <span className="italic">My favorite part of programming</span> is the
-        problem-solving aspect. I <span className="underline">love</span> the
-        feeling of finally figuring out a solution to a problem. My core stack
-        is{" "}
-        <span className="font-bold">
-          React, Next.js, Node.js,PHP, MongoDB and MySql
-        </span>
-        . I am also familiar with TypeScript and Prisma. I am always looking to
-        learn new technologies.
-      </p>
+      
+      <div className="space-y-6 text-gray-700 dark:text-white/80">
+        <p className="text-lg">
+          I began my development journey with{" "}
+          <span className="font-semibold text-blue-600 dark:text-blue-400">Core PHP & MySQL</span>{" "}
+          during my bachelor's degree. What started as curiosity quickly became a passion for{" "}
+          <span className="font-bold text-gradient">solving complex problems</span>{" "}
+          through code.
+        </p>
 
-      <p>
-        <span className="font-bold italic">When I'm not coding</span>, I enjoy playing
-        video games 🎮, and watching movies 🍿.
-      </p>
+        <p>
+          Over the past <span className="font-bold text-purple-600 dark:text-purple-400">{stats.experience}</span> {stats.experienceLabel.toLowerCase()}, 
+          I've evolved into a {personal.title.toLowerCase()} specializing in modern web technologies. 
+          My core expertise includes{" "}
+          <span className="font-bold">React, Next.js, Node.js, PHP, Laravel,</span>{" "}
+          and both <span className="font-semibold">SQL & NoSQL databases</span>.
+        </p>
+
+        <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-6 border border-blue-200 dark:border-gray-600">
+          <p className="text-base">
+            <span className="font-bold italic text-gradient">What drives me?</span>{" "}
+            The thrill of transforming ideas into functional, scalable applications. 
+            I love the problem-solving aspect of development and the satisfaction of 
+            delivering solutions that make a real impact.
+          </p>
+        </div>
+
+        <p>
+          I'm always exploring new technologies and best practices to stay at the 
+          forefront of web development. Currently excited about{" "}
+          <span className="font-semibold text-green-600 dark:text-green-400">
+            TypeScript, cloud architectures, and performance optimization
+          </span>.
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+          <div className="bg-white dark:bg-white/10 rounded-xl p-4 border border-gray-200 dark:border-white/20">
+            <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+              🎯 Current Focus
+            </h4>
+            <p className="text-sm">
+              Building scalable web applications and helping businesses 
+              achieve their digital transformation goals.
+            </p>
+          </div>
+          
+          <div className="bg-white dark:bg-white/10 rounded-xl p-4 border border-gray-200 dark:border-white/20">
+            <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+              🌍 Availability
+            </h4>
+            <p className="text-sm">
+              Open to international projects and remote collaborations 
+              across different timezones.
+            </p>
+          </div>
+        </div>
+
+        <p className="text-base italic">
+          <span className="font-bold">When I'm not coding</span>, you'll find me 
+          playing video games 🎮, watching movies 🍿, or exploring the latest tech trends. 
+          I believe in maintaining a healthy work-life balance that keeps creativity flowing.
+        </p>
+      </div>
     </motion.section>
   );
 }

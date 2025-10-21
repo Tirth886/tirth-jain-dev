@@ -15,10 +15,10 @@ export const links = [
     name: "About",
     hash: "#about",
   },
-  // {
-  //   name: "Projects",
-  //   hash: "#projects",
-  // },
+  {
+    name: "Services",
+    hash: "#services",
+  },
   {
     name: "Skills",
     hash: "#skills",
@@ -35,64 +35,14 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: "Software Developer Internship",
-    location: "Grass Solution Pvt Ltd",
+    title: "Software Developer III",
+    location: "Zuru Tech",
     href: true,
-    redirect: "https://grras.com/",
+    redirect: "https://www.zuru.tech/",
     description:
-      "While doing Bachelor i got a chance doing internship, without missing i catch it and learn HTML, CSS, JS, PHP, PHP FrameWork (CodeIgniter), AngularJS",
-    icon: React.createElement(CgWorkAlt),
-    date: "2018",
-  },
-  {
-    title: "BCA (Bachelor In Computer Application)",
-    location: "Moradabad, Uttar Pradesh",
-    href: false,
-    description:
-      "I started development journey with Core PHP / MYSQL, when i was doing my bachelors. I love to build applications and solving the problem.",
-    icon: React.createElement(LuGraduationCap),
-    date: "2019",
-  },
-  {
-    title: "Software Engineer",
-    location: "Finbyz Tech Pvt Ltd",
-    href: true,
-    redirect: "https://finbyz.tech/",
-    description:
-      "In my first job at Finbyz Tech, Here i explored a lot of technologies #electron.js, frappe, javascript, websocket which excited me. As I was very pasionate about coding/learning and working with new technologies.",
-    icon: React.createElement(CgWorkAlt),
-    date: "2019 - 2020 (Pursuing MCA)",
-  },
-  {
-    title: "Sr Full-Stack Developer",
-    location: "Align Connect Pvt Ltd",
-    href: true,
-    redirect: "http://alignconnect.in/",
-    description:
-      "I wanted to find myself more with some new challenges. So, I joined as a FullStack Developer, later on i promoted as Sr. FullStack Software Engineer. Here i build product sales crm, Ecommerce Website (Araurveda), Lead Management System and many landing pages using Javascript framework. Here i also get a chance to work with the Hosting Server WHM, Cpannel. I do work here by taking up the ownership",
-    icon: React.createElement(CgWorkAlt),
-    date: "2020 - 2021 (Pursuing MCA)",
-  },
-
-  {
-    title: "MCA (Master In Computer Application)",
-    location: "Ahmedabad, Gujarat",
-    href: false,
-    description:
-      "I graduated immediately found a job as a Software Developer, above timeline showing that.",
-    icon: React.createElement(LuGraduationCap),
-    date: "2021",
-  },
-
-  {
-    title: "Software Enginner",
-    location: "Hidden Brain Pvt Ltd",
-    href: true,
-    redirect: "https://www.hiddenbrains.com/",
-    description:
-      "I have been want to build a product by adapting the best practices in terms of development,testing and tooling. So, i expanded my understanding of what it takes to build a great product, and given me tremendous amounts of learnings in terms of product management and engineering systems design.",
-    icon: React.createElement(CgWorkAlt),
-    date: "2021 - 2023",
+      "Leading technological innovation as a Senior Software Developer, contributing expertise to cutting-edge software solutions. Collaborating with talented teams to drive impactful solutions and shape the future of technology. Focus on excellence and pushing technological boundaries in a dynamic development environment.",
+    icon: React.createElement(FaReact),
+    date: "2023 - Present 🚀",
   },
   {
     title: "Tech Lead",
@@ -100,19 +50,49 @@ export const experiencesData = [
     href: true,
     redirect: "https://www.excellentwebworld.com/",
     description:
-      "My primary focus is to provide guidance to the team and facilitate their growth through the adoption of cutting-edge technologies.",
+      "Provided technical leadership and guidance to development teams, facilitating growth through adoption of cutting-edge technologies. Led architectural decisions, code reviews, and mentored junior developers while delivering high-quality web solutions for clients.",
     icon: React.createElement(CgWorkAlt),
-    date: "2023 - 2023",
+    date: "2023",
   },
   {
-    title: "Software Developer III",
-    location: "Zuru Tech",
+    title: "Software Engineer",
+    location: "Hidden Brain Pvt Ltd",
     href: true,
-    redirect: "https://www.zuru.tech/",
+    redirect: "https://www.hiddenbrains.com/",
     description:
-      "As a Software Developer III at Zuru Tech, I am at the forefront of technological innovation, contributing my expertise to the dynamic landscape of software development. With a focus on excellence and a commitment to pushing boundaries, I collaborate with a talented team of professionals to drive impactful solutions and shape the future of technology.",
-    icon: React.createElement(FaReact),
-    date: "2023 - Present 🚀",
+      "Built scalable products by implementing industry best practices in development, testing, and tooling. Expanded understanding of product management and engineering systems design while delivering robust software solutions. Gained tremendous learning in product development lifecycle.",
+    icon: React.createElement(CgWorkAlt),
+    date: "2021 - 2023",
+  },
+  {
+    title: "Sr Full-Stack Developer",
+    location: "Align Connect Pvt Ltd",
+    href: true,
+    redirect: "http://alignconnect.in/",
+    description:
+      "Promoted to Senior Full-Stack Developer, taking ownership of complex projects including CRM systems, e-commerce platforms, and lead management solutions. Worked with hosting servers (WHM, CPanel) and delivered multiple landing pages using modern JavaScript frameworks.",
+    icon: React.createElement(CgWorkAlt),
+    date: "2020 - 2021",
+  },
+  {
+    title: "Software Engineer",
+    location: "Finbyz Tech Pvt Ltd",
+    href: true,
+    redirect: "https://finbyz.tech/",
+    description:
+      "Explored cutting-edge technologies including Electron.js, Frappe framework, JavaScript, and WebSocket implementations. Passionate about learning new technologies and solving complex development challenges in a fast-paced startup environment.",
+    icon: React.createElement(CgWorkAlt),
+    date: "2019 - 2020",
+  },
+  {
+    title: "Software Developer Internship",
+    location: "Grass Solution Pvt Ltd",
+    href: true,
+    redirect: "https://grras.com/",
+    description:
+      "Kickstarted development career during bachelor's degree, learning foundational technologies including HTML, CSS, JavaScript, PHP, CodeIgniter framework, and AngularJS. Built strong programming fundamentals and gained hands-on industry experience.",
+    icon: React.createElement(CgWorkAlt),
+    date: "2018",
   },
 ] as const;
 
@@ -152,6 +132,7 @@ export const skillsData = [
   "Flutter",
   "Socket.IO",
   "Node.js",
+  "Nest.js",
   "Git",
   "Tailwind",
   "Prisma",
@@ -160,12 +141,14 @@ export const skillsData = [
   "AWS",
   "Linux",
   "Shell Programming",
-  "MySQl",
+  "MySQL",
   "PHP",
-  // "GraphQL",
-  // "Apollo",
   "Express",
-  // "PostgreSQL",
   "Python",
-  // "Framer Motion",
+  "LangChain.js",
+  "CI/CD",
+  "Docker",
+  "GraphQL",
+  "PostgreSQL",
+  "Framer Motion",
 ] as const;

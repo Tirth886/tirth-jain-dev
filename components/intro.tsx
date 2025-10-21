@@ -1,25 +1,36 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { BsArrowRight, BsLinkedin } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
-import { FaGithubSquare } from "react-icons/fa";
+import { FaGithubSquare, FaIdCard } from "react-icons/fa";
 import { useSectionInView } from "@/lib/hooks";
 import { useActiveSectionContext } from "@/context/active-section-context";
+import { personal, stats, social } from "@/config/site-config";
+import ProfileCard from "./profile-card";
 
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
+  const [showProfileCard, setShowProfileCard] = useState(false);
 
   return (
     <section
       ref={ref}
       id="home"
-      className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]"
+      className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-28 relative"
     >
+      {/* Background Gradient - Full viewport coverage */}
+      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-20%] left-[-10%] w-[120vw] h-[120vh] bg-gradient-to-br from-blue-400/25 via-purple-500/20 to-emerald-400/25 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-[-10%] right-[-20%] w-[80vw] h-[80vh] bg-gradient-to-bl from-pink-400/20 via-blue-500/15 to-cyan-400/20 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-[-30%] left-[-20%] w-[100vw] h-[60vh] bg-gradient-to-tr from-violet-400/20 via-emerald-500/15 to-orange-400/20 rounded-full blur-2xl"></div>
+        <div className="absolute top-[30%] right-[10%] w-[60vw] h-[40vh] bg-gradient-to-l from-indigo-400/15 via-pink-500/10 to-yellow-400/15 rounded-full blur-xl"></div>
+      </div>
+
       <div className="flex items-center justify-center">
         <div className="relative">
           <motion.div
@@ -32,17 +43,17 @@ export default function Intro() {
           >
             <Image
               src="/tj.png"
-              alt="Tirth Jain"
+              alt={`${personal.name} - ${personal.title}`}
               width="192"
               height="192"
               quality="95"
               priority={true}
-              className="h-24 bg-[#26282A] w-24 rounded-full object-cover border-[0.35rem] border-[#000000] shadow-xl"
+              className="h-24 w-24 sm:h-32 sm:w-32 bg-[#26282A] rounded-full object-cover border-[0.35rem] border-[#000000] shadow-xl hover:shadow-2xl transition-shadow duration-300"
             />
           </motion.div>
 
           <motion.span
-            className="absolute bottom-0 right-0 text-4xl"
+            className="absolute bottom-0 right-0 text-3xl sm:text-4xl"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
@@ -57,19 +68,35 @@ export default function Intro() {
         </div>
       </div>
 
-      <motion.h4
-        className="mb-10 mt-4 px-4 font-medium !leading-[1.5] sm:text-3xl"
+      <motion.div
+        className="mb-10 mt-4 px-4"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <span className="font-bold">Hello, I'm Tirth Jain.</span> I'm a{" "}
-        <span className="font-bold">software engineer </span>and<span className="font-bold"> full-stack developer</span> with{" "}
-        <span className="font-bold">6+ years</span> of experience. I enjoy
-        building <span className="italic">sites & apps</span>. I have worked with various front-end frameworks and back-end frameworks, databases {"("}<span className="font-bold underline">MySql, MongoDB</span>{")"}, designed REST APIs. I usually talk about tech stack like <span className="font-bold underline">NodeJs, NextJs, ReactJs, PhP, Laravel, Codeigniter</span>.
-      </motion.h4>
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium !leading-[1.4] mb-4">
+          <span className="font-bold">Hello, I'm {personal.name}.</span>
+        </h1>
+        
+        <div className="text-lg sm:text-xl lg:text-2xl font-medium !leading-[1.5] space-y-2">
+          <p>
+            I'm a <span className="font-bold text-gradient">Software Engineer</span> and{" "}
+            <span className="font-bold text-gradient">{personal.title}</span>
+          </p>
+          <p>
+            with <span className="font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">{stats.experience}</span> {stats.experienceLabel.toLowerCase()}.
+          </p>
+        </div>
+        
+        <p className="text-base sm:text-lg text-gray-700 dark:text-white/80 mt-4 max-w-2xl mx-auto leading-relaxed">
+          {personal.description} I specialize in building <span className="italic font-medium">modern web applications</span> using{" "}
+          <span className="font-semibold text-blue-600 dark:text-blue-400">React, Next.js, Node.js, PHP,</span> and{" "}
+          <span className="font-semibold text-green-600 dark:text-green-400">cloud technologies</span>.
+          Available for <span className="font-semibold underline decoration-2 decoration-purple-500">international projects</span>.
+        </p>
+      </motion.div>
 
       <motion.div
-        className="flex flex-col sm:flex-row items-center justify-center gap-2 px-4 text-lg font-medium"
+        className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 text-lg font-medium"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -78,7 +105,7 @@ export default function Intro() {
       >
         <Link
           href="#contact"
-          className="group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition"
+          className="group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition mobile-button touch-friendly w-full sm:w-auto justify-center"
           onClick={() => {
             setActiveSection("Contact");
             setTimeOfLastClick(Date.now());
@@ -89,30 +116,74 @@ export default function Intro() {
         </Link>
 
         <a
-          className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10"
+          className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 mobile-button touch-friendly w-full sm:w-auto justify-center"
           href="/Tirth_Jain_Resume.pdf"
-          download
+          download={`${personal.name.replace(' ', '_')}_Resume.pdf`}
+          aria-label={`Download ${personal.name}'s Resume`}
         >
           Download CV{" "}
           <HiDownload className="opacity-60 group-hover:translate-y-1 transition" />
         </a>
 
         <a
-          className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
-          href="https://www.linkedin.com/in/tirthjaindev"
-          target="_blank"
+          onClick={() => setShowProfileCard(true)}
+          className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60 mobile-button touch-friendly"
+          aria-label="View Profile Card"
         >
-          <BsLinkedin />
+          <FaIdCard />
         </a>
 
-        <a
-          className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
-          href="https://github.com/Tirth886/"
-          target="_blank"
-        >
-          <FaGithubSquare />
-        </a>
+        <div className="flex gap-2 w-full sm:w-auto justify-center">
+          <a
+            className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60 mobile-button touch-friendly"
+            href={social.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Visit ${personal.name}'s LinkedIn Profile`}
+          >
+            <BsLinkedin />
+          </a>
+
+          <a
+            className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60 mobile-button touch-friendly"
+            href={social.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Visit ${personal.name}'s GitHub Profile`}
+          >
+            <FaGithubSquare />
+          </a>
+        </div>
       </motion.div>
+
+      {/* Professional Highlights */}
+      <motion.div
+        className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto px-4"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3, duration: 0.5 }}
+      >
+        <div className="bg-white dark:bg-white/10 rounded-xl p-4 border border-gray-200 dark:border-white/20 text-center">
+          <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">{stats.experience}</div>
+          <div className="text-sm text-gray-600 dark:text-white/70">{stats.experienceLabel}</div>
+        </div>
+        
+        <div className="bg-white dark:bg-white/10 rounded-xl p-4 border border-gray-200 dark:border-white/20 text-center">
+          <div className="text-2xl font-bold text-green-600 dark:text-green-400">{stats.projects}</div>
+          <div className="text-sm text-gray-600 dark:text-white/70">{stats.projectsLabel}</div>
+        </div>
+        
+        {/* <div className="bg-white dark:bg-white/10 rounded-xl p-4 border border-gray-200 dark:border-white/20 text-center">
+          <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">{stats.availability}</div>
+          <div className="text-sm text-gray-600 dark:text-white/70">{stats.availabilityLabel}</div>
+        </div> */}
+      </motion.div>
+
+      {/* Profile Card Modal */}
+      <ProfileCard 
+        isOpen={showProfileCard} 
+        onClose={() => setShowProfileCard(false)} 
+      />
     </section>
   );
 }

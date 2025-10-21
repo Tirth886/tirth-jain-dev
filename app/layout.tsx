@@ -6,25 +6,89 @@ import Footer from "@/components/footer";
 import ThemeSwitch from "@/components/theme-switch";
 import ThemeContextProvider from "@/context/theme-context";
 import { Toaster } from "react-hot-toast";
-import Head from "next/head";
+import SEOScripts from "@/components/seo-scripts";
 import { Metadata } from "next";
+import { seo, personal, contact } from "@/config/site-config";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Tirth Jain | FullStack Developer | Software Engineer",
-  description: "Experienced FullStack Developer and Software Engineer, adept in both front-end and back-end technologies. Crafting seamless, user-centric applications with a blend of creativity and technical skill.",
+  metadataBase: new URL(`https://${personal.domain}`),
+  title: {
+    default: seo.title,
+    template: `%s | ${personal.name} - ${personal.title}`
+  },
+  description: seo.description,
+  keywords: seo.keywords,
+  authors: [{ name: seo.author, url: `https://${personal.domain}` }],
+  creator: seo.creator,
+  publisher: seo.publisher,
+  category: "Technology",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     type: "website",
-    images: "https://131d-103-238-107-187.ngrok-free.app/tj.png",
-    determiner: "auto",
-    description: "Discover the world of Tirth Jain - a passionate FullStack Developer and Software Engineer. From front-end finesse to back-end brilliance, Tirth's creations redefine user experiences through innovation and expertise.",
-    siteName: "tirthj.dev",
-    phoneNumbers: "+91-7984814283",
-    title: "Tirth Jain | FullStack Developer | Software Engineer",
+    locale: "en_US",
     url: "https://tirthj.dev/",
+    siteName: "Tirth Jain - Full Stack Developer",
+    title: "Tirth Jain | Professional Full Stack Developer & Software Engineer",
+    description: "Expert full-stack developer with 6+ years experience. Specialized in React, Next.js, Node.js, PHP, and modern web technologies. Available for international projects and consulting.",
+    images: [
+      {
+        url: "/tj.png",
+        width: 1200,
+        height: 630,
+        alt: "Tirth Jain - Full Stack Developer & Software Engineer",
+        type: "image/png",
+      },
+      {
+        url: "/tj.png",
+        width: 400,
+        height: 400,
+        alt: "Tirth Jain Profile Picture",
+        type: "image/png",
+      }
+    ],
+    emails: [contact.email],
+    phoneNumbers: [contact.phone],
     countryName: "India",
-    emails: "tirth886jain@gmail.com",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tirth Jain | Full Stack Developer & Software Engineer",
+    description: "Professional full-stack developer available for international projects. Expert in React, Next.js, Node.js, PHP, and modern web technologies.",
+    images: ["/tj.png"],
+    creator: "@tirthjaindev",
+  },
+  alternates: {
+    canonical: "https://tirthj.dev/",
+    languages: {
+      'en-US': 'https://tirthj.dev/',
+      'hi-IN': 'https://tirthj.dev/',
+    },
+  },
+  other: {
+    "mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "default",
+    "format-detection": "telephone=no",
+    "geo.region": "IN-GJ",
+    "geo.placename": "Gujarat, India",
+    "ICBM": "23.0225, 72.5714",
+  },
+  verification: {
+    google: "your-google-verification-code",
+    yandex: "your-yandex-verification-code",
+    yahoo: "your-yahoo-verification-code",
   }
 };
 
@@ -35,11 +99,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="!scroll-smooth">
-      <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
+      <head>
+        <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1f2937" />
+        <link rel="manifest" href="/manifest.json" />
+      </head>
       <body
         suppressHydrationWarning={true}
-        className={`${inter.className} bg-gray-50 text-gray-950 relative pt-28 sm:pt-36 dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90`}
+        className={`${inter.className} bg-gray-50 text-gray-950 relative pt-20 sm:pt-24 dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90`}
       >
+        <SEOScripts />
+        
         <div className="bg-[#fbe2e3] absolute top-[-6rem] -z-10 right-[11rem] h-[31.25rem] w-[31.25rem] rounded-full blur-[10rem] sm:w-[68.75rem] dark:bg-[#946263]"></div>
         <div className="bg-[#dbd7fb] absolute top-[-1rem] -z-10 left-[-35rem] h-[31.25rem] w-[50rem] rounded-full blur-[10rem] sm:w-[68.75rem] md:left-[-33rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem] dark:bg-[#676394]"></div>
 
@@ -49,7 +122,16 @@ export default function RootLayout({
             {children}
             <Footer />
 
-            <Toaster position="top-right" />
+            <Toaster 
+              position="top-right"
+              toastOptions={{
+                duration: 4000,
+                style: {
+                  background: 'var(--toast-bg)',
+                  color: 'var(--toast-color)',
+                },
+              }}
+            />
             <ThemeSwitch />
           </ActiveSectionContextProvider>
         </ThemeContextProvider>
