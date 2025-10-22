@@ -1,4 +1,24 @@
 // Site Configuration - Global settings and static values
+
+/*
+ * CONVERSION TRACKING USAGE:
+ * 
+ * 1. Add new conversion IDs in analytics.googleAdsConversions
+ * 2. Use trackConversion utilities to track conversions:
+ *    - trackConversion.contactForm() - for contact form submissions
+ *    - trackConversion.custom(conversionId, value, currency) - for custom conversions
+ * 
+ * 3. Example usage in components:
+ *    import { trackConversion, getConversionId } from '@/config/site-config';
+ *    
+ *    // Simple tracking
+ *    trackConversion.contactForm();
+ *    
+ *    // Custom tracking with value
+ *    const phoneConversionId = getConversionId('phoneCall');
+ *    trackConversion.custom(phoneConversionId, 5.0, 'USD');
+ */
+
 export const siteConfig = {
   // Personal Information
   personal: {
@@ -82,6 +102,14 @@ export const siteConfig = {
     googleAnalytics: "G-ECVBPRRFP6", // Replace with actual GA4 ID
     hotjar: "6553249", // Replace with actual Hotjar ID
     googleAds: "AW-17672047567", // Replace with actual Google Ads ID
+    googleAdsConversions: {
+      contactForm: "AW-17672047567/FBZvCM3f27EbEM-X2OpB", // Contact form submission conversion
+      // Example of how to add more conversion actions:
+      // phoneCall: "AW-17672047567/PHONE_CALL_CONVERSION_ID",
+      // downloadCV: "AW-17672047567/CV_DOWNLOAD_CONVERSION_ID",
+      // scheduleCall: "AW-17672047567/SCHEDULE_CALL_CONVERSION_ID",
+      // projectInquiry: "AW-17672047567/PROJECT_INQUIRY_CONVERSION_ID",
+    },
   },
 
   // Business Information
@@ -146,6 +174,25 @@ export const getSocialLink = (platform: keyof typeof siteConfig.social) => {
 
 export const getContactInfo = (key: keyof typeof siteConfig.contact) => {
   return siteConfig.contact[key];
+};
+
+// Conversion tracking utility functions
+export const trackConversion = {
+  contactForm: () => {
+    if (typeof window !== 'undefined' && window.gtag_report_conversion) {
+      window.gtag_report_conversion();
+    }
+  },
+  custom: (conversionId: string, value: number = 1.0, currency: string = 'INR') => {
+    if (typeof window !== 'undefined' && window.gtag_report_custom_conversion) {
+      window.gtag_report_custom_conversion(conversionId, value, currency);
+    }
+  },
+};
+
+// Get conversion IDs for manual tracking
+export const getConversionId = (action: keyof typeof siteConfig.analytics.googleAdsConversions) => {
+  return siteConfig.analytics.googleAdsConversions[action];
 };
 
 // Export individual sections for easier imports
