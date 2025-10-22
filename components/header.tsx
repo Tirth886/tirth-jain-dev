@@ -48,6 +48,42 @@ export default function Header() {
     setMobileMenuOpen(false);
   };
 
+  // Enhanced close functionality for better touch handling
+  const handleBackdropClick = (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    closeMobileMenu();
+  };
+
+  const handleBackdropTouch = (e: React.TouchEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    closeMobileMenu();
+  };
+
+  // Handle escape key to close menu
+  useEffect(() => {
+    const handleEscapeKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && mobileMenuOpen) {
+        closeMobileMenu();
+      }
+    };
+
+    if (mobileMenuOpen) {
+      document.addEventListener('keydown', handleEscapeKey);
+      // Prevent body scroll when menu is open
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.removeEventListener('keydown', handleEscapeKey);
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscapeKey);
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileMenuOpen]);
+
   const handleNavClick = (sectionName: string) => {
     setActiveSection(sectionName as any);
     setTimeOfLastClick(Date.now());
@@ -109,7 +145,7 @@ export default function Header() {
       >
         <motion.nav
           className={clsx(
-            "bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg rounded-full border border-gray-200/50 dark:border-gray-700/50 shadow-lg",
+            "bg-white/80 backdrop-blur-lg rounded-full border border-gray-200/50 shadow-lg",
             "transition-all duration-300 mx-auto",
             isScrolled ? "shadow-xl scale-95" : "shadow-lg scale-100"
           )}
@@ -133,10 +169,10 @@ export default function Header() {
                     onClick={() => handleNavClick(link.name)}
                     className={clsx(
                       "relative flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap",
-                      "hover:bg-gray-100/50 dark:hover:bg-gray-800/50",
+                      "hover:bg-gray-100/50",
                       isActive
                         ? "text-white z-10"
-                        : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"
+                        : "text-gray-600 hover:text-gray-900"
                     )}
                   >
                     {Icon && <Icon className="w-4 h-4 flex-shrink-0" />}
@@ -190,8 +226,8 @@ export default function Header() {
         <motion.header
           className={clsx(
             "fixed top-0 left-0 right-0 z-[999] transition-all duration-300",
-            "bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg",
-            "border-b border-gray-200/50 dark:border-gray-700/50",
+            "bg-white/90 backdrop-blur-lg",
+            "border-b border-gray-200/50",
             isScrolled ? "shadow-lg" : "shadow-sm"
           )}
           initial={{ y: -100, opacity: 0 }}
@@ -200,7 +236,7 @@ export default function Header() {
           <div className="flex items-center justify-between h-16 px-4">
             <Link 
               href="#home"
-              className="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-white"
+              className="flex items-center gap-2 text-xl font-bold text-gray-900"
               onClick={() => handleNavClick("Home")}
             >
               <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
@@ -225,17 +261,18 @@ export default function Header() {
               
               <motion.button
                 onClick={toggleMobileMenu}
-                className="relative p-2 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                className="relative p-2 rounded-xl bg-gray-100 hover:bg-gray-200 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center touch-manipulation"
                 whileTap={{ scale: 0.95 }}
+                style={{ touchAction: 'manipulation' }}
               >
                 <motion.div
                   animate={{ rotate: mobileMenuOpen ? 180 : 0 }}
                   transition={{ duration: 0.2 }}
                 >
                   {mobileMenuOpen ? (
-                    <HiX className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+                    <HiX className="w-6 h-6 text-gray-700" />
                   ) : (
-                    <HiMenuAlt3 className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+                    <HiMenuAlt3 className="w-6 h-6 text-gray-700" />
                   )}
                 </motion.div>
               </motion.button>
@@ -249,11 +286,13 @@ export default function Header() {
             <>
               {/* Backdrop */}
               <motion.div
-                className="fixed inset-0 bg-black/50 z-[998] backdrop-blur-sm"
+                className="fixed inset-0 bg-black/50 z-[998] backdrop-blur-sm touch-manipulation"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                onClick={closeMobileMenu}
+                onClick={handleBackdropClick}
+                onTouchEnd={handleBackdropTouch}
+                style={{ touchAction: 'manipulation' }}
               />
               
               {/* Mobile Menu */}
@@ -265,7 +304,7 @@ export default function Header() {
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
                 <motion.div
-                  className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50 overflow-hidden w-80 max-w-full"
+                  className="bg-white rounded-2xl shadow-2xl border border-gray-200/50 overflow-hidden w-80 max-w-full"
                   initial={{ y: -20, opacity: 0, scale: 0.95 }}
                   animate={{ y: 0, opacity: 1, scale: 1 }}
                   exit={{ y: -20, opacity: 0, scale: 0.95 }}
@@ -292,13 +331,13 @@ export default function Header() {
                                 "hover:scale-105 active:scale-95",
                                 isActive
                                   ? "bg-gradient-to-r from-blue-600 via-blue-500 to-purple-600 text-white shadow-xl shadow-blue-500/25"
-                                  : "bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:shadow-lg"
+                                  : "bg-gray-50 text-gray-700 hover:bg-gray-100 hover:shadow-lg"
                               )}
                             >
                               {Icon && (
                                 <Icon className={clsx(
                                   "w-6 h-6 transition-colors duration-300",
-                                  isActive ? "text-white" : "text-gray-600 dark:text-gray-400"
+                                  isActive ? "text-white" : "text-gray-600"
                                 )} />
                               )}
                               <span className={clsx(

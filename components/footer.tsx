@@ -117,11 +117,6 @@ export default function Footer() {
             <p>
               &copy; {currentYear} {personal.name}. All rights reserved.
             </p>
-            <div className="flex gap-4">
-              <span>Built with Next.js & Tailwind CSS</span>
-              <span>•</span>
-              <span>Deployed on Vercel</span>
-            </div>
           </div>
         </div>
       </div>

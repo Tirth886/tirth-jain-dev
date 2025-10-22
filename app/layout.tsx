@@ -3,7 +3,6 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import ActiveSectionContextProvider from "@/context/active-section-context";
 import Footer from "@/components/footer";
-import ThemeSwitch from "@/components/theme-switch";
 import ThemeContextProvider from "@/context/theme-context";
 import { Toaster } from "react-hot-toast";
 import SEOScripts from "@/components/seo-scripts";
@@ -102,19 +101,29 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
-        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
-        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1f2937" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover" />
+        <meta name="theme-color" content="#ffffff" />
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body
         suppressHydrationWarning={true}
-        className={`${inter.className} bg-gray-50 text-gray-950 relative pt-20 sm:pt-24 dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90`}
+        className={`${inter.className} bg-gray-50 text-gray-950 relative pt-20 sm:pt-24`}
       >
         <SEOScripts />
         
-        <div className="bg-[#fbe2e3] absolute top-[-6rem] -z-10 right-[11rem] h-[31.25rem] w-[31.25rem] rounded-full blur-[10rem] sm:w-[68.75rem] dark:bg-[#946263]"></div>
-        <div className="bg-[#dbd7fb] absolute top-[-1rem] -z-10 left-[-35rem] h-[31.25rem] w-[50rem] rounded-full blur-[10rem] sm:w-[68.75rem] md:left-[-33rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem] dark:bg-[#676394]"></div>
+        {/* Responsive background gradients */}
+        <div className="bg-[#fbe2e3] absolute top-[-6rem] -z-10 right-[11rem] h-[31.25rem] w-[31.25rem] rounded-full blur-[10rem] 
+                        sm:w-[68.75rem] sm:h-[50rem] sm:top-[-10rem] sm:right-[-10rem]
+                        md:w-[75rem] md:h-[55rem] md:right-[-5rem]
+                        lg:w-[80rem] lg:h-[60rem] lg:right-[0rem]
+                        xl:w-[85rem] xl:h-[65rem] xl:right-[5rem]
+                        2xl:w-[90rem] 2xl:h-[70rem] 2xl:right-[10rem]"></div>
+        <div className="bg-[#dbd7fb] absolute top-[-1rem] -z-10 left-[-35rem] h-[31.25rem] w-[50rem] rounded-full blur-[10rem] 
+                        sm:w-[68.75rem] sm:h-[50rem] sm:left-[-20rem] sm:top-[-5rem]
+                        md:left-[-15rem] md:w-[75rem] md:h-[55rem] 
+                        lg:left-[-10rem] lg:w-[80rem] lg:h-[60rem] 
+                        xl:left-[-5rem] xl:w-[85rem] xl:h-[65rem] 
+                        2xl:left-[0rem] 2xl:w-[90rem] 2xl:h-[70rem]"></div>
 
         <ThemeContextProvider>
           <ActiveSectionContextProvider>
@@ -132,7 +141,6 @@ export default function RootLayout({
                 },
               }}
             />
-            <ThemeSwitch />
           </ActiveSectionContextProvider>
         </ThemeContextProvider>
       </body>

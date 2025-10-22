@@ -81,7 +81,7 @@ export const siteConfig = {
   analytics: {
     googleAnalytics: "G-ECVBPRRFP6", // Replace with actual GA4 ID
     hotjar: "6553249", // Replace with actual Hotjar ID
-    googleAds: "AW-XXXXXXXXXX", // Replace with actual Google Ads ID
+    googleAds: "AW-17672047567", // Replace with actual Google Ads ID
   },
 
   // Business Information

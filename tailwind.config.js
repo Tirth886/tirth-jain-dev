@@ -178,7 +178,20 @@ module.exports = {
       },
       screens: {
         'xs': '475px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
         '3xl': '1600px',
+        // Large mobile devices
+        'mobile-lg': '430px',
+        // iPhone 16 Plus and similar
+        'mobile-xl': '440px',
+        // Tablet portrait
+        'tablet': '768px',
+        // Tablet landscape
+        'tablet-lg': '1024px',
       },
     },
   },

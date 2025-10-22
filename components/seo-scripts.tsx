@@ -158,7 +158,7 @@ export default function SEOScripts({
       />
 
       {/* Google Ads Conversion Tracking */}
-      {/* <Script
+      <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${analytics.googleAds}`}
         strategy="afterInteractive"
       />
@@ -173,7 +173,7 @@ export default function SEOScripts({
             gtag('config', '${analytics.googleAds}');
           `,
         }}
-      /> */}
+      />
     </>
   )
 }
