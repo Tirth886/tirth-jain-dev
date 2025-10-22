@@ -147,7 +147,7 @@ export default function Intro() {
 
         <a
           onClick={() => setShowProfileCard(true)}
-          className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack mobile-button touch-friendly"
+          className="bg-white p-4 text-gray-700 hover:text-gray-950 hidden sm:flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack mobile-button touch-friendly"
           aria-label="View Profile Card"
         >
           <FaIdCard />
