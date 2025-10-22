@@ -233,30 +233,31 @@ export default function Header() {
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
         >
-          <div className="flex items-center justify-between h-16 px-4">
+          <div className="flex items-center justify-between h-16 px-3">
             <Link 
               href="#home"
-              className="flex items-center gap-2 text-xl font-bold text-gray-900"
+              className="flex items-center gap-2 text-lg font-bold text-gray-900"
               onClick={() => handleNavClick("Home")}
             >
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">{personal.logo}</span>
+              <div className="w-7 h-7 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-xs">{personal.logo}</span>
               </div>
-              <span className="hidden xs:block">{personal.domain}</span>
+              <span className="hidden mobile-lg:block text-base">{personal.domain}</span>
             </Link>
             
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               {/* Schedule Meeting Button - Mobile */}
               <motion.a
                 href={contact.calendly}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1 px-3 py-1.5 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-full shadow-md hover:shadow-lg transition-all duration-300 font-medium text-xs"
+                className="flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-full shadow-md hover:shadow-lg transition-all duration-300 font-medium text-sm whitespace-nowrap"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <HiCalendar className="w-3 h-3" />
-                <span className="hidden xs:block">Meet</span>
+                <HiCalendar className="w-4 h-4 flex-shrink-0" />
+                <span className="hidden xs:inline">{contact.calendlyLabel}</span>
+                <span className="xs:hidden">Meet</span>
               </motion.a>
               
               <motion.button
