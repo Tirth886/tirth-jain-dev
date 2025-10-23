@@ -28,5 +28,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/#contact`,
       lastModified: new Date(),
     },
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified: new Date(),
+    },
   ]
 }

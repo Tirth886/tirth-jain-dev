@@ -28,6 +28,7 @@ export default function Footer() {
               <a href="#skills" className="block hover:text-gray-900 dark:hover:text-white transition-colors">Skills</a>
               <a href="#experience" className="block hover:text-gray-900 dark:hover:text-white transition-colors">Experience</a>
               <a href="#contact" className="block hover:text-gray-900 dark:hover:text-white transition-colors">Contact</a>
+              <a href="/privacy" className="block hover:text-gray-900 dark:hover:text-white transition-colors">Privacy Policy</a>
             </div>
           </div>
 
@@ -117,6 +118,11 @@ export default function Footer() {
             <p>
               &copy; {currentYear} {personal.name}. All rights reserved.
             </p>
+            <div className="flex gap-4">
+              <a href="/privacy" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                Privacy Policy
+              </a>
+            </div>
           </div>
         </div>
       </div>

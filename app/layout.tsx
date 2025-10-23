@@ -109,41 +109,53 @@ export default function RootLayout({
         suppressHydrationWarning={true}
         className={`${inter.className} bg-gray-50 text-gray-950 relative pt-20 sm:pt-24`}
       >
-        <SEOScripts />
-        
-        {/* Responsive background gradients */}
-        <div className="bg-[#fbe2e3] absolute top-[-6rem] -z-10 right-[11rem] h-[31.25rem] w-[31.25rem] rounded-full blur-[10rem] 
-                        sm:w-[68.75rem] sm:h-[50rem] sm:top-[-10rem] sm:right-[-10rem]
-                        md:w-[75rem] md:h-[55rem] md:right-[-5rem]
-                        lg:w-[80rem] lg:h-[60rem] lg:right-[0rem]
-                        xl:w-[85rem] xl:h-[65rem] xl:right-[5rem]
-                        2xl:w-[90rem] 2xl:h-[70rem] 2xl:right-[10rem]"></div>
-        <div className="bg-[#dbd7fb] absolute top-[-1rem] -z-10 left-[-35rem] h-[31.25rem] w-[50rem] rounded-full blur-[10rem] 
-                        sm:w-[68.75rem] sm:h-[50rem] sm:left-[-20rem] sm:top-[-5rem]
-                        md:left-[-15rem] md:w-[75rem] md:h-[55rem] 
-                        lg:left-[-10rem] lg:w-[80rem] lg:h-[60rem] 
-                        xl:left-[-5rem] xl:w-[85rem] xl:h-[65rem] 
-                        2xl:left-[0rem] 2xl:w-[90rem] 2xl:h-[70rem]"></div>
-
-        <ThemeContextProvider>
-          <ActiveSectionContextProvider>
-            <Header />
-            {children}
-            <Footer />
-
-            <Toaster 
-              position="top-right"
-              toastOptions={{
-                duration: 4000,
-                style: {
-                  background: 'var(--toast-bg)',
-                  color: 'var(--toast-color)',
-                },
-              }}
-            />
-          </ActiveSectionContextProvider>
-        </ThemeContextProvider>
+        <ConditionalLayout>{children}</ConditionalLayout>
       </body>
     </html>
+  );
+}
+
+function ConditionalLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <SEOScripts />
+      
+      {/* Responsive background gradients - only for non-privacy pages */}
+      <div className="privacy-exclude bg-[#fbe2e3] absolute top-[-6rem] -z-10 right-[11rem] h-[31.25rem] w-[31.25rem] rounded-full blur-[10rem] 
+                      sm:w-[68.75rem] sm:h-[50rem] sm:top-[-10rem] sm:right-[-10rem]
+                      md:w-[75rem] md:h-[55rem] md:right-[-5rem]
+                      lg:w-[80rem] lg:h-[60rem] lg:right-[0rem]
+                      xl:w-[85rem] xl:h-[65rem] xl:right-[5rem]
+                      2xl:w-[90rem] 2xl:h-[70rem] 2xl:right-[10rem]"></div>
+      <div className="privacy-exclude bg-[#dbd7fb] absolute top-[-1rem] -z-10 left-[-35rem] h-[31.25rem] w-[50rem] rounded-full blur-[10rem] 
+                      sm:w-[68.75rem] sm:h-[50rem] sm:left-[-20rem] sm:top-[-5rem]
+                      md:left-[-15rem] md:w-[75rem] md:h-[55rem] 
+                      lg:left-[-10rem] lg:w-[80rem] lg:h-[60rem] 
+                      xl:left-[-5rem] xl:w-[85rem] xl:h-[65rem] 
+                      2xl:left-[0rem] 2xl:w-[90rem] 2xl:h-[70rem]"></div>
+
+      <ThemeContextProvider>
+        <ActiveSectionContextProvider>
+          <div className="privacy-exclude">
+            <Header />
+          </div>
+          {children}
+          <div className="privacy-exclude">
+            <Footer />
+          </div>
+
+          <Toaster 
+            position="top-right"
+            toastOptions={{
+              duration: 4000,
+              style: {
+                background: 'var(--toast-bg)',
+                color: 'var(--toast-color)',
+              },
+            }}
+          />
+        </ActiveSectionContextProvider>
+      </ThemeContextProvider>
+    </>
   );
 }
