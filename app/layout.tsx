@@ -6,6 +6,7 @@ import Footer from "@/components/footer";
 import ThemeContextProvider from "@/context/theme-context";
 import { Toaster } from "react-hot-toast";
 import SEOScripts from "@/components/seo-scripts";
+import WhatsAppFloat from "@/components/whatsapp-float";
 import { Metadata } from "next";
 import { seo, personal, contact } from "@/config/site-config";
 
@@ -143,6 +144,9 @@ function ConditionalLayout({ children }: { children: React.ReactNode }) {
           <div className="privacy-exclude">
             <Footer />
           </div>
+
+          {/* WhatsApp Floating Button */}
+          <WhatsAppFloat />
 
           <Toaster 
             position="top-right"
